@@ -86,7 +86,7 @@ The TID is accessible threw the XTF_ID attribute in each feature type.
 My INTERLIS model contains a class with more than one geometry attribute. How is this class mapped to an FME feature type?::
 ili2fme uses the first geometry attribute of the INTERLIS class as geometry of the FME feature type. Any further geometry attributes are mapped as ordinary FME attributes. The encoding of the FME attributes containing geometry can be controlled by the ili2fme parameter GEOMETRY_ENCODING.
 
-=== Configuartion
+=== Configuration
 
 [qanda]
 Which version of ili2fme is installed?::
