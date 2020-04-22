@@ -8,7 +8,7 @@ permalink: reference
 The INTERLIS 2 reader and writer module (ili2fme) provides FME with
 access to INTERLIS 2 and INTERLIS 1 transfer files.
 
-This documenation assumes you are familiar with FME and the INTERLIS 1 and 2
+This documentation assumes you are familiar with FME and the INTERLIS 1 and 2
 formats. For more information about FME, please read the 
 https://knowledge.safe.com/page/documentation/index.html[FME documentation]. 
 For more information about INTERLIS, go to https://www.interlis.ch/.
@@ -134,7 +134,7 @@ enumeration element name (the value as it would appear in an INTERLIS 2
 transfer file). This option is recommended because it is less error
 prone and offers compatibility between INTERLIS 1 and 2.
 
-Create Feature Types For Enumerations::
+[[CreateFeatureTypesForEnumerations]]Create Feature Types For Enumerations::
 Controls how FME feature types are created for INTERLIS enumerations
 +
 No::: No feature types are created for enumerations
@@ -336,8 +336,8 @@ the main table (`ModelA.TopicA.ClassA_MT`)
 INTERLIS 2 supports incremental transfers (change only transfers).
 Incremental transfer happens per basket. There are two kind of
 incremental transfers: INITIAL and UPDATE. INITIAL ist the first
-transfer in a serie of transfers. It includes all objects. UPDATE is
-used for all succeeding transfers follwing INITIAL and includes only
+transfer in a series of transfers. It includes all objects. UPDATE is
+used for all succeeding transfers following INITIAL and includes only
 changed objects since the last transfer. Both kinds require additional
 format attributes.
 
@@ -496,7 +496,7 @@ Content of the INTERLIS 2 transfer file header section.
 section of the transfer file.
 
 |oidspace{}.name |For each OID domain used in this INTERLIS 2
-transferfile, an alias name (as used in this transfer file).
+transfer file, an alias name (as used in this transfer file).
 
 |oidspace{}.oiddomain |Qualified name of the INTERLIS 2 OID domain
 definition.
@@ -510,7 +510,7 @@ transfer file.
 [options="header"]
 |===
 |*Attribute* |*Description*
-|xtf_id |For each basket in the INTERLIS 2 transferfile, the value of
+|xtf_id |For each basket in the INTERLIS 2 transfer file, the value of
 the `BID` XML-attribute.
 
 |xtf_topic |Qualified name of the INTERLIS 2 topic name. In the figure
@@ -544,8 +544,8 @@ the same topic.
 
 ==== XTF_ENUMS
 
-This feature type is only created by the reader, if the parameter
-<<Create Feature Types For Enumerations>> is set to *SingleType*.
+This feature type is only created by the reader if the parameter
+<<CreateFeatureTypesForEnumerations>> is set to *SingleType*.
 
 [options="header"]
 |===

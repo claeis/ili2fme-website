@@ -5,7 +5,7 @@ categories: [Workbench]
 tags: [OID, xtf]
 ---
 
-Das Beispiel zeigt, wie man in der XTF Transferdatei, die OIDSPACES Elemente erzeugt.
+Das Beispiel zeigt, wie man in der XTF Transferdatei die OIDSPACES Elemente erzeugt.
 
 [Workbench]({% link /assets/20121119-oidspaces.zip %})
 
