@@ -8,7 +8,7 @@ tags: [ STRUCTURE, xtf]
 Um eine Geomtrie zu schreiben, die im INTERLIS Modell nicht direkt als Attribut der Klasse modelliert ist, 
 sondern als Attribut innerhalb einer Struktur, muss die FME-Geometrie in ein FME-Listen-Attribut extrahiert werden.
 
-[Workbench]({% link /assets/20131106-multilingualwrite.zip %})
+[Workbench]({% link /assets/20140221-geominstruct.zip %})
 
 Datenmodell:
 
