@@ -6,8 +6,6 @@ branches:
   only:
     - master
 
-install: true
-  
 script: 
   - gradle buildSite 
 deploy:
