@@ -1,5 +1,3 @@
-plugins {
-}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -25,6 +23,7 @@ def extractedIli2fmeJar = "$buildDir/ili2fmeJar"
 configurations {
     ili2fme { transitive = false }
     ftpAntTask
+    scpAntTask
 }
 
 dependencies {
@@ -38,6 +37,8 @@ dependencies {
 		//}
    }
     ftpAntTask "org.apache.ant:ant-commons-net:1.10.7"
+    //scpAntTask "com.jcraft:jsch:0.1.55"
+	scpAntTask "org.apache.ant:ant-jsch:1.10.7"
 }
 
 task getIli2fmeVersion {
@@ -78,8 +79,22 @@ ant.taskdef(name: 'myftp',
 			classname: 'org.apache.tools.ant.taskdefs.optional.net.FTP',
 			classpath: configurations.ftpAntTask.asPath)
 
+ant.taskdef(name: 'myscp',
+			classname: 'org.apache.tools.ant.taskdefs.optional.ssh.Scp',
+			classpath: configurations.scpAntTask.asPath)
 
 task uploadSite {
+	doLast {
+
+		ant.myscp(password: site_pwd, trust: "yes",
+			todir: site_usr+'@'+site_url+":/public_html") {
+				fileset(dir: '_site' ) {
+					include(name: '**')
+				}
+		}
+	}
+}
+task uploadFtpSite {
 	doLast {
 
 		ant.myftp(server: site_url, userid: site_usr, password: site_pwd, 
