@@ -2,6 +2,10 @@ language: ruby
 rvm:
   - 2.6  
   
+addons:
+  ssh_known_hosts:
+  - www270.your-server.de  
+
 branches:
   only:
     - master

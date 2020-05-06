@@ -86,7 +86,7 @@ ant.taskdef(name: 'myscp',
 task uploadSite {
 	doLast {
 
-		ant.myscp(password: site_pwd, trust: "yes",
+		ant.myscp(password: site_pwd,
 			todir: site_usr+'@'+site_url+":/public_html") {
 				fileset(dir: '_site' ) {
 					include(name: '**')
