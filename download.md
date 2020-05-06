@@ -3,11 +3,11 @@ title: Download
 permalink: download
 ---
 
-[ili2fme-7.0.7.msi](https://downloads.interlis.ch/ili2fme/ili2fme-7.0.7.msi) 3.2 MB ([zip](https://downloads.interlis.ch/ili2fme/ili2fme-7.0.7.zip))
+[ili2fme-{{site.data.version.version}}.msi](https://downloads.interlis.ch/ili2fme/ili2fme-{{site.data.version.version}}.msi) 3.2 MB ([zip](https://downloads.interlis.ch/ili2fme/ili2fme-{{site.data.version.version}}.zip))
 
 Documentation
 
-[ili2fme-7.0.7.pdf](https://downloads.interlis.ch/ili2fme/ili2fme-7.0.7.pdf)
+[ili2fme-{{site.data.version.version}}.pdf](https://downloads.interlis.ch/ili2fme/ili2fme-{{site.data.version.version}}.pdf)
 
 
 Archived versions can be found [here](https://downloads.interlis.ch/ili2fme).
