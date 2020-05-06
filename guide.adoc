@@ -104,7 +104,7 @@ To write INTERLIS 1-data, the process is the following
 Prerequisites: the INTERLIS model (.ili) has to exist before!
 
 - Set up a Workbench
-- Define an "Swiss INTERLIS (ili2fme)` destination dataset
+- Define an `Swiss INTERLIS (ili2fme)` destination dataset
 - Import the feature type definitions from your ILI-model (Destination Data -> Import FeatureTypes -> Browse to your ILI-file; define the appropriate ili2fme parameters)
 - Define a transfer identification for each feature, by setting the format attribute "xtf_id" (e.g. generate it with a counter or map a format attribute like OBJECTID / FID or similar)
 - Route your features to the destination feature types (connect the arrows)
