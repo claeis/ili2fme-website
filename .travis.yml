@@ -1,0 +1,16 @@
+language: none
+  
+branches:
+  only:
+    - master
+
+install: true
+  
+script: 
+  - gradle buildSite 
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: gradle -Dsite_pwd=${site_pwd} -Dsite_usr=iliyfm -Dsite_url=www270.your-server.de uploadSite
+    on:
+      branch: master

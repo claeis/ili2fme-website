@@ -5,3 +5,4 @@ _site/
 *~
 /build
 .gradle
+/user.properties

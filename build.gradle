@@ -1,0 +1,91 @@
+plugins {
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+	mavenCentral()
+    maven {
+        url "http://jars.interlis.ch"
+    }
+}
+
+Properties properties = new Properties()
+File propFile=project.rootProject.file('user.properties')
+if(propFile.exists()){
+	properties.load(propFile.newDataInputStream())
+}
+def windir = System.getProperty('windir',properties.get('windir',""))
+def site_pwd = System.getProperty('site_pwd',properties.get('site_pwd','site_pwd'))
+def site_usr = System.getProperty('site_usr',properties.get('site_usr','site_usr'))
+def site_url = System.getProperty('site_url',properties.get('site_url','site_url'))
+
+def generatedResources = "$buildDir/generated"
+def extractedIli2fmeJar = "$buildDir/ili2fmeJar"
+
+configurations {
+    ili2fme { transitive = false }
+    ftpAntTask
+}
+
+dependencies {
+   ili2fme("ch.interlis:ili2fme:latest.release"){
+		//artifact {
+			  //useful when some artifact properties unconventional
+		//	  name = 'ili2fme' //artifact name different than module name
+		//	  extension = 'zip'
+		//	  type = 'zip'
+		//	  classifier = 'bindist'
+		//}
+   }
+    ftpAntTask "org.apache.ant:ant-commons-net:1.10.7"
+}
+
+task getIli2fmeVersion {
+	def versionPropsFile = new File("_data/version.json")
+    outputs.files "$versionPropsFile"
+	doLast{
+		def version = configurations.ili2fme.incoming.artifacts[0].id.componentIdentifier.version
+		def json = groovy.json.JsonOutput.toJson([version: version])
+		versionPropsFile.write(json)
+	}
+}
+
+task getIli2fmeJar(type: Copy){
+	from {
+		zipTree(configurations.ili2fme.singleFile).matching { include '**/ili2fme.jar' }.singleFile
+	}
+	into "$extractedIli2fmeJar"
+}
+
+task buildSite {
+	doLast {
+		def jekyllCmd = ['exec', 'jekyll', 'build']
+		if(windir==""){
+    		jekyllCmd.add(0,'bundle')
+    	}else{
+    		jekyllCmd.add(0,'bundle.bat')
+    		jekyllCmd.add(0,"/c")
+    		jekyllCmd.add(0,"cmd")
+    	}
+
+		exec {
+			commandLine jekyllCmd
+		}
+	}
+}
+
+task uploadSite {
+	doLast {
+
+		ant.taskdef(name: 'ftp',
+					classname: 'org.apache.tools.ant.taskdefs.optional.net.FTP',
+					classpath: configurations.ftpAntTask.asPath)
+		ant.ftp(server: site_url, userid: site_usr, password: site_pwd, 
+			remoteDir: "/public_html", passive:"yes") {
+				fileset(dir: '_site' ) {
+					include(name: '**')
+				}
+		}
+	}
+}
+
