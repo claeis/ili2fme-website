@@ -12,6 +12,15 @@ asciidoctor:
     
 permalink: /:title:output_ext
 
+exclude:
+  - /.travis.yml
+  - /build
+  - /build.gradle
+  - /settings.gradle
+  - /user.properties
+  - /README.md
+  - /LICENSE
+
 defaults:
   - scope:
       path: ""
