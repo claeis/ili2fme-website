@@ -81,7 +81,7 @@ task uploadSite {
 					classname: 'org.apache.tools.ant.taskdefs.optional.net.FTP',
 					classpath: configurations.ftpAntTask.asPath)
 		ant.ftp(server: site_url, userid: site_usr, password: site_pwd, 
-			remoteDir: "/public_html", passive:"yes") {
+			remoteDir: "/public_html", passive:"yes", retriesAllowed: 3) {
 				fileset(dir: '_site' ) {
 					include(name: '**')
 				}
