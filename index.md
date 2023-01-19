@@ -5,8 +5,8 @@ permalink: /
 
 ## Features
 
-- reads INTERLIS 2 transfer files (2.2+2.3)
-- writes INTERLIS 2 transfer files (2.2+2.3)
+- reads INTERLIS 2 transfer files (2.2,2.3,2.4)
+- writes INTERLIS 2 transfer files (2.2,2.3,2.4)
 - reads INTERLIS 1 transfer files
 - writes INTERLIS 1 transfer files
 
