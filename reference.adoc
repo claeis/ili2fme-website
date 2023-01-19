@@ -335,7 +335,7 @@ the main table (`ModelA.TopicA.ClassA_MT`)
 
 INTERLIS 2 supports incremental transfers (change only transfers).
 Incremental transfer happens per basket. There are two kind of
-incremental transfers: INITIAL and UPDATE. INITIAL ist the first
+incremental transfers: INITIAL and UPDATE. INITIAL is the first
 transfer in a series of transfers. It includes all objects. UPDATE is
 used for all succeeding transfers following INITIAL and includes only
 changed objects since the last transfer. Both kinds require additional
@@ -435,13 +435,37 @@ be read:
 image:media/image4.png[image,width=576,height=304]
 
 INTERLIS structure attributes (in the example the attribute "color" in
-the class "Car") are mapped to FME lists. The definition of the INTERLIS
-structure (in the example the structure "Color") is not mapped as a FME
+the class "Car") as well as BAG and LIST of primitive types are mapped to FME lists. 
+The definition of the INTERLIS structure (in the example the structure "Color") is not mapped as a FME
 feature type. The type of the structure element is defined by the value
 of the attribute xtf_class (similar to the class type of objects; see
 sec. Superclass Strategy), which is mandatory to be set. In the example
 has the list attribute `color\{0}.xtf_class` therefore the value
 `ModelA.TopicA.Color`.
+Primitive types are directly mapped to according list attributes in FME and can be used as common lists. `attr1{}`.
+Be aware, that the order of the objects for LIST OF needs be handled separately.
+
+
+=== Multiple Geometries per Class
+
+An INTERLIS class may define multiple attributes of type geometry.
+
+image:media/image8.png[INTERLIS model to FME schema
+mapping,width=576,height=318]
+
+ili2fme maps the first geometry of the INTERLIS class to the FME
+geometry of the feature. Any additional INTERLIS geometry attributes are
+mapped to existing FME attributes. The value of these attributes
+(attribute _b_ in the diagram above) is HEX-encoded OGC WKB (this can be
+changed with the parameter
+Geometry Encoding)
+and can be extracted from that attribute to the feature geometry with
+the
+https://www.safe.com/transformers/geometry-replacer/[GeometryReplacer]
+transformer or set with the
+https://www.safe.com/transformers/geometry-extractor/[GeometryExtractor]
+transformer.
+
 
 === Format Attributes
 
